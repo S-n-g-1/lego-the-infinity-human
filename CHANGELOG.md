@@ -37,7 +37,8 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - _Belum ada._
 
 ### Fixed
-- _Belum ada._
+- `HUD`: koneksi `EventBus.currency_changed` memakai handler berargumen `_on_currency_changed`; sebelumnya error "Method expected 0 arguments" muncul setiap kali stud bertambah saat memecah balok.
+- Regresi test `tests/test_hud.gd` menambah cakupan sinyal inventory/currency.
 
 ## [0.0.1] - 2026-11-18
 

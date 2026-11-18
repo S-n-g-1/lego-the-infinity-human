@@ -16,7 +16,7 @@ func _ready() -> void:
 func _connect_signals() -> void:
 	EventBus.player_health_changed.connect(_on_health_changed)
 	EventBus.inventory_changed.connect(_refresh_inventory)
-	EventBus.currency_changed.connect(_refresh_inventory)
+	EventBus.currency_changed.connect(_on_currency_changed)
 	EventBus.quest_started.connect(_refresh_objective)
 	EventBus.quest_objective_updated.connect(_on_objective_updated)
 	EventBus.quest_completed.connect(_on_quest_completed)
@@ -34,6 +34,10 @@ func _refresh_inventory() -> void:
 	_brick_label.text = "Balok  %d     Stud  %d" % [
 		Inventory.get_bricks(), Inventory.get_studs()
 	]
+
+
+func _on_currency_changed(_amount: int) -> void:
+	_refresh_inventory()
 
 
 func _refresh_objective(_quest_id: StringName = &"") -> void:
