@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/QuestDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"bc_001"
+title = "Perbaiki Jembatan Nexus"
+description = "Kumpulkan balok, pasang jembatan, dan bantu Vera menyeberang."
+objectives = [
+{
+"id": &"obj_collect",
+"type": &"collect",
+"target": &"brick",
+"required": 12,
+"label": "Kumpulkan 12 balok"
+},
+{
+"id": &"obj_build",
+"type": &"build",
+"target": &"bridge_4m",
+"required": 1,
+"label": "Pasang Jembatan 4m"
+},
+{
+"id": &"obj_cross",
+"type": &"interact",
+"target": &"vera",
+"required": 1,
+"label": "Bantu Vera menyeberang"
+}
+]
+rewards = {&"stud": 30, &"blueprint": &"catapult"}
+start_active = true

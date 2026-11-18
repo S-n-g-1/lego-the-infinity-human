@@ -25,18 +25,19 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] Branch protection `main` (2 required checks: lint + gdUnit4)
 
 ### M1 — Vertical Slice
-- [x] Input map 10 aksi (WASD, jump, sprint, build, vision, interact, pause)
-- [x] Player minifigure: movement, kamera orbit third-person, lompat, sprint, health
+- [x] Input map 15 aksi (WASD, jump, sprint, attack, build, rotate, blueprint 1-3, vision, interact, pause)
+- [x] Player minifigure: movement, kamera orbit third-person, lompat, sprint, health, attack
 - [x] Ground placeholder + pencahayaan untuk vertical slice
-- [x] 4 unit test movement (total 12 test aktif)
-- [ ] Brick breaking: objek pecah jadi pickup balok
-- [ ] Build Mode: place 3 blueprint sederhana (jembatan, tangga, katapel)
-- [ ] SATU quest: "Perbaiki Jembatan Nexus"
-- [ ] HUD minimal: health, balok, objective
+- [x] Brick breaking: 6 prop pecah jadi pickup balok + stud (magnet ke player)
+- [x] Inventory + QuestManager sebagai fondasi (ADR-004)
+- [x] Build Mode: ghost placement, snap grid, 3 blueprint (jembatan, tangga, katapel)
+- [x] SATU quest: "Perbaiki Jembatan Nexus" + NPC Vera menyeberang
+- [x] HUD minimal: health, balok/stud, objective, hint build mode, notifikasi
+- [x] 18 unit test aktif (movement, inventory, quest, resource, alur M1)
 
 ### M2 — Core Systems
-- [ ] Inventory & Currency (Studs, Bricks, Cores)
-- [ ] QuestManager + objective tracker
+- [ ] Inventory & Currency — expansi fondasi M1 (Cores, kategori item, save/load)
+- [ ] QuestManager + objective tracker — expansi fondasi M1 (quest graph, syarat, failure)
 - [ ] Combat melee + gadget ranged
 - [ ] Save/load 3 slot + checkpoint
 - [ ] Creator Level & Blueprint Tree

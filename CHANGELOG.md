@@ -20,12 +20,18 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - CI first run hijau: lint + 8 test gdUnit4 lolos.
 - Branch protection `main` aktif dengan required checks lint & gdUnit4.
 
-### M1 — Vertical Slice (mulai)
-- Input map 10 aksi melalui `tools/setup_input_map.gd` (WASD, lompat, sprint, build, vision, interact, pause).
-- `Player.tscn` + `Player.gd`: CharacterBody3D, kamera orbit mouse, lompat, sprint, health, respawn.
+### M1 — Vertical Slice (selesai)
+- Input map 15 aksi melalui `tools/setup_input_map.gd` (WASD, lompat, sprint, attack, build, rotate, blueprint 1-3, vision, interact, pause; klik kiri untuk attack/pasang).
+- `Player.tscn` + `Player.gd`: CharacterBody3D, kamera orbit mouse, lompat, sprint, health, respawn, serangan ke objek dalam jangkauan.
 - `PlayerMovement.gd`: kalkulasi movement murni yang bisa di-test.
 - `Ground.tscn` sebagai lantai uji + directional light di `Main.tscn`.
-- 4 unit test movement; total 12 test lulus.
+- `Inventory` & `QuestManager` autoload (+ ADR-004), resource `BlueprintDef` & `QuestDef`.
+- `BreakableBrick.tscn` → `BrickPickup.tscn`: pecah, melayang, lalu magnet ke player; stud langsung masuk inventory.
+- `BuildMode.gd`: ghost transparan, snap grid 0.5 m, rotasi 45°, cek biaya & tumpang tindih, pasang 3 struktur (jembatan, tangga, katapel).
+- `NpcVera.tscn`: menyeberang otomatis setelah jembatan terpasang.
+- Quest **`bc_001` — Perbaiki Jembatan Nexus** dengan 3 objective dan reward 30 stud + blueprint katapel.
+- `HUD.tscn`: health, balok/stud, objective tracker, hint Build Mode, notifikasi.
+- 18 unit test aktif: movement, inventory, quest, resource, dan simulasi alur M1 penuh — semuanya lulus.
 
 ### Changed
 - _Belum ada._

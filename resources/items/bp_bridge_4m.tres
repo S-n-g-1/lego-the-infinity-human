@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BlueprintDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/BlueprintDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"bridge_4m"
+display_name = "Jembatan 4m"
+cost = {&"brick": 12}
+scene_path = "res://scenes/gameplay/structures/Bridge.tscn"
+hint = "Jembatan datar sepanjang 4 meter"

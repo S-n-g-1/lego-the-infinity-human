@@ -24,6 +24,7 @@ var _jump_velocity: float = 0.0
 func _ready() -> void:
 	_jump_velocity = PlayerMovement.get_jump_velocity(gravity, jump_height)
 	_camera.current = true
+	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if OS.is_debug_build():
 		print("[Player] Spawn: %s" % global_position)
@@ -45,6 +46,29 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.MOUSE_MODE_CAPTURED if GameManager.is_playing()
 			else Input.MOUSE_MODE_VISIBLE
 		)
+	if event.is_action_pressed(&"attack") and GameManager.is_playing():
+		_attack()
+
+
+func _attack() -> void:
+	var facing := Vector3(
+		sin(_visual.rotation.y), 0.0, cos(_visual.rotation.y)
+	)
+	for node: Node in get_tree().get_nodes_in_group("breakable"):
+		if not is_instance_valid(node):
+			continue
+		var target := node as Node3D
+		if target == null:
+			continue
+		var to_target := target.global_position - global_position
+		to_target.y = 0.0
+		if to_target.length() > 3.0:
+			continue
+		if facing.dot(to_target.normalized()) < 0.2:
+			continue
+		if target.has_method("hit"):
+			target.call("hit", 1)
+			return
 
 
 func _physics_process(delta: float) -> void:

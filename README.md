@@ -21,7 +21,7 @@ Pemain berperan sebagai *Infinity Human* — minifigure yang terbangun di **Infi
 
 1. Buka proyek dengan **Godot 4.6** (`Project > Open` → pilih folder ini).
 2. Tekan **F5** untuk menjalankan — bootstrap minimal `scenes/main/Main.tscn` aktif dan memindahkan state `BOOT → PLAYING`.
-3. Struktur dasar sudah aktif: 4 autoload terdaftar di `project.godot`.
+3. Struktur dasar sudah aktif: 6 autoload terdaftar di `project.godot` (lihat [`docs/architecture/overview.md`](docs/architecture/overview.md)).
 
 Autoload yang tersedia:
 
@@ -68,10 +68,16 @@ Aturan penempatan detail ada di [`docs/architecture/overview.md`](docs/architect
 | Kamera | Gerakkan mouse (pointer terkunci saat play) |
 | Lompat | `Space` |
 | Sprint | `Shift` |
-| Build Mode | `B` *(belum diimplementasikan)* |
-| Builder Vision | `Q` *(belum diimplementasikan)* |
-| Interact | `E` *(belum diimplementasikan)* |
+| Serang / pecahkan balok | Klik kiri |
+| Build Mode masuk/keluar | `B` |
+| Pilih blueprint | `1` / `2` / `3` atau scroll mouse |
+| Putar ghost | `R` |
+| Pasang struktur | Klik kiri |
+| Builder Vision | `Q` *(rencana M2)* |
+| Interact | `E` *(rencana M2)* |
 | Pause | `Esc` |
+
+Alur tutorial M1: pecahkan 6 balok → kumpulkan minimal 12 balok → tekan `B` → pasang **Jembatan 4m** → Vera menyeberang → quest selesai.
 
 ## CI
 

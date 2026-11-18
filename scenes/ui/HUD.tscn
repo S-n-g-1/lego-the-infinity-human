@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 22
+text = "HP  100 / 100"
+
+[node name="BrickLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -24.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 22
+text = "Balok  0     Stud  0"
+
+[node name="ObjectiveLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 560.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 18
+text = ""
+
+[node name="BuildLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 96.0
+offset_right = 360.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 18
+text = ""
+
+[node name="HintLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 620.0
+offset_right = 360.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 18
+text = ""

@@ -36,6 +36,8 @@ signal checkpoint_activated(checkpoint_id: StringName)
 signal world_fragment_restored(fragment_id: StringName)
 signal build_mode_toggled(enabled: bool)
 signal structure_built(blueprint_id: StringName)
+signal blueprint_selected(id: StringName, display_name: String, cost: Dictionary)
+signal npc_crossed(npc_id: StringName)
 
 # --- UI & naratif ----------------------------------------------------------
 signal notification_requested(text: String)

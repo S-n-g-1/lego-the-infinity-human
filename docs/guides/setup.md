@@ -27,13 +27,14 @@ git remote add origin <URL_REPO>
 #    - Project Settings → Physics → 3d: Jolt Physics
 #    - Project Settings → Rendering → GL Compatibility
 #    - Tekan F5 → player spawn, kamera aktif, state "BOOT -> PLAYING"
-#    - Kontrol: WASD jalan, Space lompat, Shift sprint, klik kanan + mouse untuk kamera
+#    - Kontrol: WASD jalan, mouse kamera, Space lompat, Shift sprint, klik kiri serang
+#    - Tutorial: pecah balok → B → 1 → klik pasang jembatan → Vera menyeberang
 #    - Input map dibuat ulang (jika perlu): godot --headless -s tools/setup_input_map.gd
 ```
 
 ## 3. Struktur Awal yang Sudah Ada
 
-- 4 autoload: `EventBus`, `GameManager`, `SaveManager`, `AudioManager`
+- 6 autoload: `EventBus`, `GameManager`, `Inventory`, `QuestManager`, `SaveManager`, `AudioManager`
 - Folder lengkap sesuai `../architecture/overview.md`
 - `.editorconfig` (UTF-8) & `.gitattributes`
 - `.gitignore` (mengabaikan `.godot/`, `exports/`, log, save lokal)
@@ -45,7 +46,7 @@ Plugin ada di `addons/gdUnit4/` dan sudah aktif lewat `[editor_plugins]` di `pro
 - UI editor: menu **gdUnit4 → Run Tests**
 - CLI: lihat [`ci.md`](ci.md#3-menjalankan-locally)
 
-Test contoh ada di `tests/test_*.gd` (EventBus, SaveManager, GameManager).
+Test ada di `tests/test_*.gd` (EventBus, SaveManager, GameManager, movement, inventory, quest, dan alur M1).
 
 ## 5. Font & Aset
 

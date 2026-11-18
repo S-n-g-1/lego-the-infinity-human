@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_step1"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_step1"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_step2"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_step2"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_step3"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_step3"]
+size = Vector3(1.4, 0.25, 1.2)
+
+[node name="Stair" type="StaticBody3D"]
+
+[node name="Step1Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.6)
+shape = SubResource("BoxShape3D_step1")
+
+[node name="Step1Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.6)
+mesh = SubResource("BoxMesh_step1")
+
+[node name="Step2Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("BoxShape3D_step2")
+
+[node name="Step2Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("BoxMesh_step2")
+
+[node name="Step3Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.6)
+shape = SubResource("BoxShape3D_step3")
+
+[node name="Step3Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.6)
+mesh = SubResource("BoxMesh_step3")
