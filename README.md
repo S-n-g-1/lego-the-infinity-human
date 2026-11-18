@@ -60,6 +60,19 @@ Aturan penempatan detail ada di [`docs/architecture/overview.md`](docs/architect
 - **Standar kode:** [`docs/guides/coding-standards.md`](docs/guides/coding-standards.md)
 - **Konvensi commit:** [`docs/guides/git-workflow.md`](docs/guides/git-workflow.md)
 
+## Kontrol (M1)
+
+| Aksi | Input |
+| --- | --- |
+| Gerak | `W A S D` |
+| Kamera | Gerakkan mouse (pointer terkunci saat play) |
+| Lompat | `Space` |
+| Sprint | `Shift` |
+| Build Mode | `B` *(belum diimplementasikan)* |
+| Builder Vision | `Q` *(belum diimplementasikan)* |
+| Interact | `E` *(belum diimplementasikan)* |
+| Pause | `Esc` |
+
 ## CI
 
 GitHub Actions menjalankan **lint GDScript** (`gdlint`) dan **tes gdUnit4** (Godot 4.6.3 headless) pada setiap push/PR ke `main`/`develop`. Detail & perintah lokal: [`docs/guides/ci.md`](docs/guides/ci.md).

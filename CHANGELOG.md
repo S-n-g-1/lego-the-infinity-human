@@ -18,6 +18,14 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - Panduan CI di `docs/guides/ci.md`.
 - Remote GitHub public `S-n-g-1/lego-the-infinity-human` dibuat; commit awal di-push ke `main`.
 - CI first run hijau: lint + 8 test gdUnit4 lolos.
+- Branch protection `main` aktif dengan required checks lint & gdUnit4.
+
+### M1 — Vertical Slice (mulai)
+- Input map 10 aksi melalui `tools/setup_input_map.gd` (WASD, lompat, sprint, build, vision, interact, pause).
+- `Player.tscn` + `Player.gd`: CharacterBody3D, kamera orbit mouse, lompat, sprint, health, respawn.
+- `PlayerMovement.gd`: kalkulasi movement murni yang bisa di-test.
+- `Ground.tscn` sebagai lantai uji + directional light di `Main.tscn`.
+- 4 unit test movement; total 12 test lulus.
 
 ### Changed
 - _Belum ada._

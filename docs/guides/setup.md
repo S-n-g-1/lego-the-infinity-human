@@ -26,7 +26,9 @@ git remote add origin <URL_REPO>
 #    - Project Settings → Autoload: 4 entri terdaftar
 #    - Project Settings → Physics → 3d: Jolt Physics
 #    - Project Settings → Rendering → GL Compatibility
-#    - Tekan F5 → bootstrap minimal jalan, Output: "BOOT -> PLAYING"
+#    - Tekan F5 → player spawn, kamera aktif, state "BOOT -> PLAYING"
+#    - Kontrol: WASD jalan, Space lompat, Shift sprint, klik kanan + mouse untuk kamera
+#    - Input map dibuat ulang (jika perlu): godot --headless -s tools/setup_input_map.gd
 ```
 
 ## 3. Struktur Awal yang Sudah Ada

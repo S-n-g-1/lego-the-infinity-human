@@ -44,21 +44,24 @@ Semua autoload memakai `call_deferred("_connect_signals")` di `_ready()` agar ur
 | `tools/` | Editor script & generator | Dijalankan via `--script` |
 | `exports/` | Build hasil export | Di-gitignore |
 
-## 4. Scene Tree Utama (rencana M1)
+## 4. Scene Tree Utama
+
+Kondisi M1 saat ini (UI & ChunkManager masuk milestone berikutnya):
 
 ```text
 Main (Node)                         # scripts/main/Main.gd
-├── World (Node3D)                  # container fragment aktif
-│   ├── ChunkManager (Node3D)
-│   ├── Player (CharacterBody3D)    # autoload-spawned di runtime
-│   └── EnemyContainer (Node3D)
-├── UI (CanvasLayer)
-│   ├── HUD
-│   ├── BuildWheel
-│   ├── MenuPause
-│   └── NotificationToast
-└── Debug (CanvasLayer)             # hanya saat OS.is_debug_build()
+├── World (Node3D)
+│   ├── Ground (StaticBody3D)       # placeholder lantai uji
+│   ├── Player (CharacterBody3D)    # scripts/characters/Player.gd
+│   │   ├── CollisionShape3D
+│   │   ├── Visual (Body + Head)
+│   │   └── CameraRig/Camera3D
+│   └── Sun (DirectionalLight3D)
+└── UI (CanvasLayer)                # menyusul
 ```
+
+Rencana akhir M1/M2: tambah `ChunkManager`, `EnemyContainer`, `HUD`, `BuildWheel`,
+`MenuPause`, dan `Debug` (hanya saat `OS.is_debug_build()`).
 
 Node di luar `World` tidak boleh membuat `Node3D` sebagai child — gunakan container yang sudah ada.
 

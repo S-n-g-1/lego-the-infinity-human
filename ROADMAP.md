@@ -22,11 +22,13 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] gdUnit4 v6.2.3 terinstal & plugin aktif; 8 test contoh lulus
 - [x] CI GitHub Actions: gdlint + gdUnit4 (`.github/workflows/ci.yml`)
 - [x] Setup Git & remote — `S-n-g-1/lego-the-infinity-human` (public, branch `main`)
-- [ ] Branch protection `main` (wajib CI hijau sebelum merge)
+- [x] Branch protection `main` (2 required checks: lint + gdUnit4)
 
 ### M1 — Vertical Slice
-- [ ] Scene `Main.tscn` lengkap + bootstrap state (MENU → PLAYING) — bootstrap dasar sudah di M0
-- [ ] Player minifigure:Movement, kamera third-person, lompat
+- [x] Input map 10 aksi (WASD, jump, sprint, build, vision, interact, pause)
+- [x] Player minifigure: movement, kamera orbit third-person, lompat, sprint, health
+- [x] Ground placeholder + pencahayaan untuk vertical slice
+- [x] 4 unit test movement (total 12 test aktif)
 - [ ] Brick breaking: objek pecah jadi pickup balok
 - [ ] Build Mode: place 3 blueprint sederhana (jembatan, tangga, katapel)
 - [ ] SATU quest: "Perbaiki Jembatan Nexus"
