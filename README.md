@@ -1,5 +1,7 @@
 # LEGO — The Infinity Human
 
+[![CI](https://github.com/S-n-g-1/lego-the-infinity-human/actions/workflows/ci.yml/badge.svg)](https://github.com/S-n-g-1/lego-the-infinity-human/actions/workflows/ci.yml)
+
 > Open-world adventure berbasis balok (LEGO-style) untuk PC (Windows/Linux), dibangun dengan **Godot 4.6** (GDScript, Jolt Physics, GL Compatibility).
 
 Pemain berperan sebagai *Infinity Human* — minifigure yang terbangun di **Infinity Expanse**, alam semesta balok yang pecah menjadi fragmen dunia. Eksplorasi bioma, memecah objek menjadi balok, merakit ulang jembatan/kendaraan/gadget, dan memulihkan lima *World Fragment* untuk menyatukan kembali alam semesta.

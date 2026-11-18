@@ -16,6 +16,8 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - 8 unit test contoh untuk `EventBus`, `SaveManager`, dan `GameManager` (semua lulus).
 - Workflow CI GitHub Actions (`.github/workflows/ci.yml`): lint `gdlint` + test gdUnit4 headless, dengan upload artefak laporan.
 - Panduan CI di `docs/guides/ci.md`.
+- Remote GitHub public `S-n-g-1/lego-the-infinity-human` dibuat; commit awal di-push ke `main`.
+- CI first run hijau: lint + 8 test gdUnit4 lolos.
 
 ### Changed
 - _Belum ada._
@@ -37,9 +39,8 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 ### Fixed
 - _Belum ada._
 
-[Unreleased]: https://example.com/lego-the-infinity-human/compare/v0.0.1...HEAD
-[0.0.1]: https://example.com/lego-the-infinity-human/releases/tag/v0.0.1
+[Unreleased]: https://github.com/S-n-g-1/lego-the-infinity-human/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/S-n-g-1/lego-the-infinity-human/releases/tag/v0.0.1
 
-> Catatan: ganti URL `example.com` dengan URL repository setelah Gitremote disiapkan.
 > Entri baru ditambahkan di bawah `## [Unreleased]` dengan format:
 > `- deskripsi singkat ([#123](link) [@username](link))`

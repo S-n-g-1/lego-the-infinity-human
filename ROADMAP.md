@@ -21,7 +21,8 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] Bootstrap minimal `Main.tscn` (state BOOT → PLAYING terverifikasi headless)
 - [x] gdUnit4 v6.2.3 terinstal & plugin aktif; 8 test contoh lulus
 - [x] CI GitHub Actions: gdlint + gdUnit4 (`.github/workflows/ci.yml`)
-- [ ] Setup Git & remote, branch protection
+- [x] Setup Git & remote — `S-n-g-1/lego-the-infinity-human` (public, branch `main`)
+- [ ] Branch protection `main` (wajib CI hijau sebelum merge)
 
 ### M1 — Vertical Slice
 - [ ] Scene `Main.tscn` lengkap + bootstrap state (MENU → PLAYING) — bootstrap dasar sudah di M0
