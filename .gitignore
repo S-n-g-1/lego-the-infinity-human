@@ -1,0 +1,18 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Export output (build results are not source)
+/exports/*
+!/exports/.gitkeep
+
+# Local save data, logs, and caches
+/saves/
+/reports/
+*.log
+*.tmp
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+*.swp

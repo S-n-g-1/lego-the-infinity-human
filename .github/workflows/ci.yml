@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint GDScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install gdtoolkit
+        run: python -m pip install "gdtoolkit>=4,<5"
+
+      - name: Run gdlint
+        run: find scripts tests -type f -name '*.gd' -print0 | xargs -0 gdlint
+
+  test:
+    name: Unit test (gdUnit4 / Godot 4.6.3)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.6.3
+          use-dotnet: false
+          include-templates: false
+
+      - name: Verify Godot
+        run: godot --version
+
+      - name: Import project (build class cache)
+        run: godot --headless --path . --editor --quit
+
+      - name: Run gdUnit4
+        run: >-
+          godot --headless --path . -s
+          res://addons/gdUnit4/bin/GdUnitCmdTool.gd
+          -a res://tests --ignoreHeadlessMode
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdunit4-reports
+          path: reports/
+          if-no-files-found: ignore
