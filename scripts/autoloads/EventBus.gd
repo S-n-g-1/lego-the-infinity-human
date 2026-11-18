@@ -38,6 +38,11 @@ signal build_mode_toggled(enabled: bool)
 signal structure_built(blueprint_id: StringName)
 signal blueprint_selected(id: StringName, display_name: String, cost: Dictionary)
 signal npc_crossed(npc_id: StringName)
+signal prop_broken(prop_id: StringName)
+
+# --- Progresi --------------------------------------------------------------
+signal xp_gained(amount: int, source: StringName)
+signal creator_level_changed(level: int, xp: int)
 
 # --- UI & naratif ----------------------------------------------------------
 signal notification_requested(text: String)

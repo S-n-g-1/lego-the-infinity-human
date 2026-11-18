@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var _health_label: Label = $HealthLabel
 @onready var _brick_label: Label = $BrickLabel
+@onready var _level_label: Label = $LevelLabel
 @onready var _objective_label: Label = $ObjectiveLabel
 @onready var _build_label: Label = $BuildLabel
 @onready var _hint_label: Label = $HintLabel
@@ -23,7 +24,9 @@ func _connect_signals() -> void:
 	EventBus.build_mode_toggled.connect(_on_build_mode_toggled)
 	EventBus.blueprint_selected.connect(_on_blueprint_selected)
 	EventBus.notification_requested.connect(_on_notification)
+	EventBus.creator_level_changed.connect(_on_creator_level_changed)
 	_refresh_inventory()
+	_refresh_level()
 
 
 func _on_health_changed(current: float, maximum: float) -> void:
@@ -38,6 +41,16 @@ func _refresh_inventory() -> void:
 
 func _on_currency_changed(_amount: int) -> void:
 	_refresh_inventory()
+
+
+func _on_creator_level_changed(_level: int, _xp: int) -> void:
+	_refresh_level()
+
+
+func _refresh_level() -> void:
+	_level_label.text = "Creator Lv %d  ·  %d XP" % [
+		Progression.creator_level, Progression.xp
+	]
 
 
 func _refresh_objective(_quest_id: StringName = &"") -> void:

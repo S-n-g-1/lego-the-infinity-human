@@ -20,6 +20,17 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - CI first run hijau: lint + 8 test gdUnit4 lolos.
 - Branch protection `main` aktif dengan required checks lint & gdUnit4.
 
+### M2 — Core Systems (mulai)
+- `Progression` autoload (ADR-005): Creator Level & XP mengikuti tabel GDD 05, mendengar `EventBus.xp_gained`.
+- Quest `bc_001` sekarang memberi 40 XP sebagai reward.
+- `SaveManager` dimodernisasi: atomic write (`.tmp` → rename), backup `.bak`, migrasi v0→v1, metadata slot, `delete_slot()`, slot auto terpisah, dan `save_dir` yang bisa diubah untuk test.
+- `Inventory.to_dict()/from_dict()`, `QuestManager.to_dict()/from_dict()`, `Player.to_dict()/from_dict()` untuk round-trip state.
+- `SaveGame.gd`: orkestrasi snapshot player/progression/inventory/quest/world (prop pecah & struktur terpasang).
+- `Checkpoint.tscn` memicu auto-save; auto-save juga tiap 5 menit dan saat quest besar selesai.
+- Menu **Save/Load** (F6): 3 slot manual + 1 auto, menampilkan level & timestamp.
+- HUD menampilkan Creator Level & XP.
+- 10 unit test baru (SaveManager M2, Progression, serialisasi); total 29 test lulus.
+
 ### M1 — Vertical Slice (selesai)
 - Input map 15 aksi melalui `tools/setup_input_map.gd` (WASD, lompat, sprint, attack, build, rotate, blueprint 1-3, vision, interact, pause; klik kiri untuk attack/pasang).
 - `Player.tscn` + `Player.gd`: CharacterBody3D, kamera orbit mouse, lompat, sprint, health, respawn, serangan ke objek dalam jangkauan.

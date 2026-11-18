@@ -131,3 +131,28 @@ func _update_camera() -> void:
 	)
 	_camera.global_position = target + dir * _camera_distance
 	_camera.look_at(target)
+
+
+func to_dict() -> Dictionary:
+	return {
+		"position": [
+			snappedf(global_position.x, 0.001),
+			snappedf(global_position.y, 0.001),
+			snappedf(global_position.z, 0.001),
+		],
+		"rotation_y": snappedf(rotation.y, 0.001),
+		"hp": current_health,
+	}
+
+
+func from_dict(data: Dictionary) -> void:
+	var position_data: Array = data.get("position", [])
+	if position_data.size() == 3:
+		global_position = Vector3(
+			float(position_data[0]), float(position_data[1]), float(position_data[2])
+		)
+	rotation.y = float(data.get("rotation_y", 0.0))
+	current_health = clampf(float(data.get("hp", max_health)), 0.0, max_health)
+	_spawn_point = global_position
+	velocity = Vector3.ZERO
+	EventBus.player_health_changed.emit(current_health, max_health)

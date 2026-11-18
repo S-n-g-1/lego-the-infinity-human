@@ -7,7 +7,7 @@
 1. **EventBus untuk koordinasi, bukan untuk kata "kembalian".** Sinyal = notifikasi. Kalau butuh nilai, panggil fungsi query (`has_item()`, `get_health()`).
 2. **Resource adalah data, Node adalah perilaku.** Data item/quest/enemy tidak boleh disimpan sebagai hardcode di script.
 3. **Scene punya satu tanggung jawab.** `Player.tscn` menggerakkan player, bukan mengelola quest.
-4. **Autoload sesedikit mungkin.** 6 saat ini (4 inti + `Inventory` + `QuestManager` sesuai ADR-004); tambah autoload butuh ADR.
+4. **Autoload sesedikit mungkin.** 7 saat ini (4 inti + `Inventory` + `QuestManager` + `Progression` sesuai ADR-004/005); tambah autoload butuh ADR.
 
 ## 2. Autoload Saat Ini
 
@@ -17,6 +17,7 @@
 | `GameManager` | `scripts/autoloads/GameManager.gd` | State machine, pause | Mengurus inventory/quest |
 | `Inventory` | `scripts/systems/Inventory.gd` | Material, currency, blueprint | Tahu struktur UI |
 | `QuestManager` | `scripts/systems/QuestManager.gd` | Quest & progres objective | Memicu gameplay langsung |
+| `Progression` | `scripts/systems/Progression.gd` | Creator Level & XP | Mengurus quest/inventory |
 | `SaveManager` | `scripts/autoloads/SaveManager.gd` | Serialisasi & slot save | Tahu struktur UI |
 | `AudioManager` | `scripts/autoloads/AudioManager.gd` | Bus, music, SFX | Memicu gameplay logic |
 
@@ -48,7 +49,7 @@ Semua autoload memakai `call_deferred("_connect_signals")` di `_ready()` agar ur
 
 ## 4. Scene Tree Utama
 
-Kondisi akhir M1 (ChunkManager, enemy, dan menu masuk milestone berikutnya):
+Kondisi M2 awal (ChunkManager dan enemy masuk milestone berikutnya):
 
 ```text
 Main (Node)                         # scripts/main/Main.gd
@@ -58,17 +59,20 @@ Main (Node)                         # scripts/main/Main.gd
 │   │   └── BrickPickup (Area3D)    # spawned saat prop pecah
 │   ├── Structures (Node3D)         # group "structures", contains ghost + hasil pasang
 │   ├── NpcVera (Node3D)            # menyeberang setelah jembatan terpasang
+│   ├── Checkpoint (Area3D)         # memicu auto-save
 │   ├── Player (CharacterBody3D)    # scripts/characters/Player.gd
 │   │   ├── CollisionShape3D
 │   │   ├── Visual (Body + Head)
 │   │   └── CameraRig/Camera3D
 │   └── Sun (DirectionalLight3D)
 ├── BuildMode (Node)                # scripts/systems/BuildMode.gd
+├── SaveGame (Node)                 # snapshot & restore state
 └── UI (CanvasLayer)
-    └── HUD (CanvasLayer)           # scripts/ui/HUD.gd
+    ├── HUD (CanvasLayer)           # scripts/ui/HUD.gd
+    └── SaveMenu (CanvasLayer)      # 3 slot + auto, dibuka dengan F6
 ```
 
-Rencana M2+: tambah `ChunkManager`, `EnemyContainer`, `BuildWheel` radial penuh,
+Rencana M2 lanjutan: tambah `ChunkManager`, `EnemyContainer`, `BuildWheel` radial penuh,
 `MenuPause`, dan `Debug` (hanya saat `OS.is_debug_build()`).
 
 Node di luar `World` tidak boleh membuat `Node3D` sebagai child — gunakan container yang sudah ada.

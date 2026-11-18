@@ -136,8 +136,19 @@ Aturan: **migrasi selalu maju satu versi**, jangan langsung loncat. Simpan file 
 - [ ] Auto-save tidak menimpa slot manual
 - [ ] Prop yang sudah pecah tidak muncul lagi setelah load
 
-## 9. Implementasi Saat Ini (M0)
+## 9. Implementasi Saat Ini (M2 — Phase A)
 
-`SaveManager.gd` sudah punya: `save_game(slot, data)`, `load_game(slot)`, `has_save(slot)`, pembuatan direktori otomatis, dan pengecekan `SAVE_VERSION`.
+Sudah ada:
+- `save_game()`, `load_game()`, `has_save()`, pembuatan direktori otomatis.
+- **Atomic write**: tulis `.tmp` lalu `DirAccess.rename_absolute()` ke file final.
+- **Backup `.bak`** sebelum overwrite dan sebelum migrasi.
+- **Migrasi v0 → v1** (`money` → `stud`), tolak versi lebih baru.
+- **Metadata UI**: `get_slot_meta()`, `list_slots()`, `delete_slot()`.
+- Slot auto terpisah (`auto.json`, `AUTO_SLOT = -1`).
+- `save_dir` bisa diubah runtime untuk isolasi test gdUnit4.
+- `SaveGame.gd` mengorkestrasi snapshot: player, progression, inventory, quest, world.
 
-Belum ada: atomic write, migrasi, metadata UI, backup `.bak`.
+Belum ada:
+- Enkripsi ringan, UI konfirmasi overwrite, dan migrasi lintas versi > 1.
+- Restorasi musuh/partikel — memang sengaja tidak disimpan sesuai aturan §3.
+- Auto-save saat quit aplikasi (akan menyusul bersama `MenuPause`).

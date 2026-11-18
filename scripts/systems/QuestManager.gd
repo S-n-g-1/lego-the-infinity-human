@@ -121,8 +121,38 @@ func _complete(quest: QuestDef) -> void:
 	_active_id = &""
 	for item_id in quest.rewards:
 		var value: Variant = quest.rewards[item_id]
-		if StringName(item_id) == &"blueprint":
-			Inventory.unlock_blueprint(StringName(value))
-		else:
-			EventBus.item_collected.emit(StringName(item_id), int(value))
+		match StringName(item_id):
+			&"blueprint":
+				Inventory.unlock_blueprint(StringName(value))
+			&"xp":
+				EventBus.xp_gained.emit(int(value), quest_id)
+			_:
+				EventBus.item_collected.emit(StringName(item_id), int(value))
 	EventBus.quest_completed.emit(quest_id)
+
+
+func to_dict() -> Dictionary:
+	var progress_copy: Dictionary = {}
+	for objective_id in _progress:
+		progress_copy[String(objective_id)] = int(_progress[objective_id])
+	var completed: Array[String] = []
+	for quest_id in _completed:
+		completed.append(String(quest_id))
+	return {
+		"active": String(_active_id),
+		"completed": completed,
+		"progress": progress_copy,
+	}
+
+
+func from_dict(data: Dictionary) -> void:
+	_active_id = StringName(data.get("active", &""))
+	_completed.clear()
+	for quest_id in data.get("completed", []):
+		_completed[StringName(quest_id)] = true
+	_progress.clear()
+	var saved_progress: Dictionary = data.get("progress", {})
+	for objective_id in saved_progress:
+		_progress[StringName(objective_id)] = int(saved_progress[objective_id])
+	if _active_id != &"" and _quests.has(_active_id):
+		EventBus.quest_started.emit(_active_id)

@@ -158,6 +158,7 @@ func place() -> void:
 	var instance := packed.instantiate() as Node3D
 	instance.global_position = _ghost.global_position
 	instance.rotation.y = _yaw
+	instance.set_meta("blueprint_id", blueprint.id)
 	_structures.add_child(instance)
 	EventBus.structure_built.emit(blueprint.id)
 	EventBus.notification_requested.emit("%s terpasang" % blueprint.display_name)
@@ -204,3 +205,10 @@ func _emit_selection() -> void:
 	EventBus.blueprint_selected.emit(
 		blueprint.id, blueprint.display_name, blueprint.cost
 	)
+
+
+func get_blueprint(blueprint_id: StringName) -> BlueprintDef:
+	for blueprint in _blueprints:
+		if blueprint.id == blueprint_id:
+			return blueprint
+	return null

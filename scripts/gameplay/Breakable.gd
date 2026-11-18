@@ -25,6 +25,7 @@ func hit(damage: int = 1) -> void:
 	_spawn_drops()
 	if studs_drop > 0:
 		EventBus.item_collected.emit(&"stud", studs_drop)
+	EventBus.prop_broken.emit(breakable_id)
 	EventBus.notification_requested.emit("+%d balok" % bricks_drop)
 	queue_free()
 

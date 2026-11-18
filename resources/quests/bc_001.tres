@@ -30,5 +30,5 @@ objectives = [
 "label": "Bantu Vera menyeberang"
 }
 ]
-rewards = {&"stud": 30, &"blueprint": &"catapult"}
+rewards = {&"stud": 30, &"xp": 40, &"blueprint": &"catapult"}
 start_active = true

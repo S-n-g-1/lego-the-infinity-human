@@ -36,12 +36,13 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] 18 unit test aktif (movement, inventory, quest, resource, alur M1)
 
 ### M2 — Core Systems
-- [ ] Inventory & Currency — expansi fondasi M1 (Cores, kategori item, save/load)
-- [ ] QuestManager + objective tracker — expansi fondasi M1 (quest graph, syarat, failure)
+- [x] Inventory & Currency — serialisasi Brick/Stud/Core/Fragment/Suit + save 3 slot
+- [ ] Quest graph, prerequisite, dan failure state
 - [ ] Combat melee + gadget ranged
-- [ ] Save/load 3 slot + checkpoint
-- [ ] Creator Level & Blueprint Tree
-- [ ] Unit test untuk tiap sistem (gdUnit4)
+- [x] Save/load 3 slot + auto + checkpoint + atomic write, backup, dan migrasi versi
+- [x] Creator Level & XP (ADR-005) + reward XP dari quest
+- [ ] Blueprint Tree berbasis Blueprint Fragment
+- [x] Unit test sistem M2 (10 test baru; total 29 test aktif)
 
 ### M3 — World & Biomes
 - [ ] WorldFragment streaming (chunk 64×64)

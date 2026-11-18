@@ -29,12 +29,13 @@ git remote add origin <URL_REPO>
 #    - Tekan F5 → player spawn, kamera aktif, state "BOOT -> PLAYING"
 #    - Kontrol: WASD jalan, mouse kamera, Space lompat, Shift sprint, klik kiri serang
 #    - Tutorial: pecah balok → B → 1 → klik pasang jembatan → Vera menyeberang
+#    - F6 membuka menu Save/Load (3 slot + auto); checkpoint otomatis menyimpan
 #    - Input map dibuat ulang (jika perlu): godot --headless -s tools/setup_input_map.gd
 ```
 
 ## 3. Struktur Awal yang Sudah Ada
 
-- 6 autoload: `EventBus`, `GameManager`, `Inventory`, `QuestManager`, `SaveManager`, `AudioManager`
+- 7 autoload: `EventBus`, `GameManager`, `Inventory`, `QuestManager`, `Progression`, `SaveManager`, `AudioManager`
 - Folder lengkap sesuai `../architecture/overview.md`
 - `.editorconfig` (UTF-8) & `.gitattributes`
 - `.gitignore` (mengabaikan `.godot/`, `exports/`, log, save lokal)

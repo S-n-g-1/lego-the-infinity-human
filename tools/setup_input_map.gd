@@ -20,6 +20,7 @@ const ACTIONS: Dictionary = {
 	"builder_vision": [{"key": KEY_Q}],
 	"interact": [{"key": KEY_E}],
 	"pause": [{"key": KEY_ESCAPE}],
+	"save_menu": [{"key": KEY_F6}],
 }
 
 
