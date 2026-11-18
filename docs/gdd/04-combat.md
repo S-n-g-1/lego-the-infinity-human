@@ -112,7 +112,14 @@ Sinyal: `EventBus.player_health_changed`, `player_died`, `item_collected`.
 
 ## 10. Checklist
 
-- [ ] `Hitbox`/`Hurtbox` dengan layer collision yang jelas
-- [ ] Drop table sebagai `.tres`, bukan hardcode
-- [ ] Test: break power 1 vs elite → tidak pecah total
-- [ ] Test: kematian tidak mengurangi balok inventory
+- [x] `Hitbox`/`Hurtbox` dengan layer collision yang jelas (Area3D projectile + group `enemy`/`breakable`)
+- [x] Drop table sebagai `.tres`, bukan hardcode (`resources/items/drop_table_grunt.tres`)
+- [x] Test: break power 1 vs elite → tidak pecah total (`tests/test_enemy_combat.gd`)
+- [x] Test: kematian tidak mengurangi balok inventory (`tests/test_enemy_combat.gd`)
+
+### Catatan implementasi M2 (phase combat)
+- `CombatMath.gd` berisi kalkulasi murni: combo 3 hit, heavy hit ke-3 (break power 2), Mega Swing (3×, cooldown 4 dtk), dan reduksi damage saat break power kurang.
+- `EnemyBase.gd` mengikuti archetype AI Patrol → Detect → Chase → Attack → Retreat → Pop.
+- `BrickGrunt` memakai `EnemyDef` + `DropTableDef` dari `.tres`; 2 instance ada di `Main.tscn`.
+- `BrickProjectile` (klik kanan) = 8 damage, cooldown 1.2 dtk, dan tidak aktif saat Build Mode.
+- Belum masuk: bos, gadget Grapple/Stun/Mine, build-based combat (turret/perisai/katapel), dan telegraph serangan.

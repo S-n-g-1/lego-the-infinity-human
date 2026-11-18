@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/main/Main.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/systems/BuildMode.gd" id="2_buildmode"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/gameplay/Checkpoint.tscn" id="8_checkpoint"]
 [ext_resource type="Script" path="res://scripts/systems/SaveGame.gd" id="9_savegame"]
 [ext_resource type="Script" path="res://scripts/ui/SaveMenu.gd" id="10_savemenu"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/BrickGrunt.tscn" id="11_grunt"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -46,6 +47,14 @@ breakable_id = &"brick6"
 
 [node name="Structures" type="Node3D" parent="World"]
 groups = ["structures"]
+
+[node name="Enemies" type="Node3D" parent="World"]
+
+[node name="Grunt1" parent="World/Enemies" instance=ExtResource("11_grunt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
+
+[node name="Grunt2" parent="World/Enemies" instance=ExtResource("11_grunt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -9)
 
 [node name="NpcVera" parent="World" instance=ExtResource("6_vera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)

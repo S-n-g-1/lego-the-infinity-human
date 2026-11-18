@@ -38,7 +38,7 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 ### M2 — Core Systems
 - [x] Inventory & Currency — serialisasi Brick/Stud/Core/Fragment/Suit + save 3 slot
 - [ ] Quest graph, prerequisite, dan failure state
-- [ ] Combat melee + gadget ranged
+- [x] Combat melee (kombo 3 hit + Mega Swing) & gadget Brick Blaster + Brick Grunt AI
 - [x] Save/load 3 slot + auto + checkpoint + atomic write, backup, dan migrasi versi
 - [x] Creator Level & XP (ADR-005) + reward XP dari quest
 - [ ] Blueprint Tree berbasis Blueprint Fragment

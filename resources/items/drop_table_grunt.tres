@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DropTableDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/DropTableDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+bricks_min = 6
+bricks_max = 10
+studs_min = 5
+studs_max = 8
+xp = 0

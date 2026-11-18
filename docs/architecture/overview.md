@@ -58,6 +58,7 @@ Main (Node)                         # scripts/main/Main.gd
 │   ├── Breakables (Node3D)         # 6 BreakableBrick
 │   │   └── BrickPickup (Area3D)    # spawned saat prop pecah
 │   ├── Structures (Node3D)         # group "structures", contains ghost + hasil pasang
+│   ├── Enemies (Node3D)            # 2 × BrickGrunt (group "enemy")
 │   ├── NpcVera (Node3D)            # menyeberang setelah jembatan terpasang
 │   ├── Checkpoint (Area3D)         # memicu auto-save
 │   ├── Player (CharacterBody3D)    # scripts/characters/Player.gd

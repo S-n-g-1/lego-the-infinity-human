@@ -12,6 +12,7 @@ const ACTIONS: Dictionary = {
 	"jump": [{"key": KEY_SPACE}],
 	"sprint": [{"key": KEY_SHIFT}],
 	"attack": [{"mouse": MOUSE_BUTTON_LEFT}],
+	"gadget": [{"mouse": MOUSE_BUTTON_RIGHT}],
 	"build_mode": [{"key": KEY_B}],
 	"rotate_build": [{"key": KEY_R}],
 	"blueprint_1": [{"key": KEY_1}],

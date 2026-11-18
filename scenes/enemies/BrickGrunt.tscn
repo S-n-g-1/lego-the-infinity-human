@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyBase.gd" id="1_enemy"]
+[ext_resource type="Resource" path="res://resources/characters/enemy_brick_grunt.tres" id="2_def"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
+radius = 0.4
+height = 1.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.8, 0.9, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_head"]
+size = Vector3(0.5, 0.4, 0.5)
+
+[node name="BrickGrunt" type="CharacterBody3D"]
+script = ExtResource("1_enemy")
+enemy_def = ExtResource("2_def")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("CapsuleShape3D_body")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+mesh = SubResource("BoxMesh_body")
+
+[node name="Head" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("BoxMesh_head")

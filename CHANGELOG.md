@@ -20,7 +20,17 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - CI first run hijau: lint + 8 test gdUnit4 lolos.
 - Branch protection `main` aktif dengan required checks lint & gdUnit4.
 
-### M2 — Core Systems (mulai)
+### M2 — Core Systems (combat)
+- `CombatMath.gd`: kalkulasi combo 3 hit, heavy hit ke-3 (break power 2), Mega Swing 3× (cooldown 4 dtk), resolved damage saat break power kurang, dan `can_hit()` berbasis arah + jarak.
+- `EnemyDef.gd` & `DropTableDef.gd` + `.tres`: `enemy_brick_grunt.tres` (30 HP, 2.5 m/s, detect 12 m) dan `drop_table_grunt.tres` (6–10 balok, 5–8 Studs).
+- `EnemyBase.gd`: state machine Patrol → Detect → Chase → Attack → Retreat → Pop; flash saat terkena, drop balok fisik, Studs, XP, dan sinyal `enemy_damaged`/`enemy_defeated`.
+- `BrickProjectile.tscn/.gd`: Brick Blaster 8 damage, 1.2 dtk cooldown, klik kanan; otomatis nonaktif saat Build Mode.
+- `Player.gd`: combo melee, charge Mega Swing, gadget, dan serangan yang kena group `breakable` **dan** `enemy`.
+- `BrickGrunt.tscn`: 2 musuh ditambahkan ke `Main.tscn` sebagai uji combat.
+- Input baru: `gadget` = klik kanan (17 aksi terdaftar).
+- 12 unit test baru; total **41 test lulus**.
+
+### M2 — Core Systems (save & progression)
 - `Progression` autoload (ADR-005): Creator Level & XP mengikuti tabel GDD 05, mendengar `EventBus.xp_gained`.
 - Quest `bc_001` sekarang memberi 40 XP sebagai reward.
 - `SaveManager` dimodernisasi: atomic write (`.tmp` → rename), backup `.bak`, migrasi v0→v1, metadata slot, `delete_slot()`, slot auto terpisah, dan `save_dir` yang bisa diubah untuk test.

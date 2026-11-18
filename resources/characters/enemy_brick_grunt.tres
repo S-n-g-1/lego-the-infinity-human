@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/EnemyDef.gd" id="1_script"]
+[ext_resource type="Resource" path="res://resources/items/drop_table_grunt.tres" id="2_drop"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"brick_grunt"
+display_name = "Brick Grunt"
+max_health = 30.0
+required_break_power = 1
+move_speed = 2.5
+detect_radius = 12.0
+attack_damage = 10.0
+attack_range = 1.6
+attack_interval = 1.2
+drop_table = ExtResource("2_drop")

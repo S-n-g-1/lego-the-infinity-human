@@ -60,7 +60,7 @@ Aturan penempatan detail ada di [`docs/architecture/overview.md`](docs/architect
 - **Standar kode:** [`docs/guides/coding-standards.md`](docs/guides/coding-standards.md)
 - **Konvensi commit:** [`docs/guides/git-workflow.md`](docs/guides/git-workflow.md)
 
-## Kontrol (M1)
+## Kontrol (M1 + combat M2)
 
 | Aksi | Input |
 | --- | --- |
@@ -68,11 +68,12 @@ Aturan penempatan detail ada di [`docs/architecture/overview.md`](docs/architect
 | Kamera | Gerakkan mouse (pointer terkunci saat play) |
 | Lompat | `Space` |
 | Sprint | `Shift` |
-| Serang / pecahkan balok | Klik kiri |
+| Serang (kombo/Mega Swing) | Klik kiri (tahan ≥0.6 dtk untuk Mega Swing) |
+| Gadget Brick Blaster | Klik kanan |
 | Build Mode masuk/keluar | `B` |
 | Pilih blueprint | `1` / `2` / `3` atau scroll mouse |
 | Putar ghost | `R` |
-| Pasang struktur | Klik kiri |
+| Pasang struktur | Klik kiri (di Build Mode) |
 | Builder Vision | `Q` *(rencana M2)* |
 | Interact | `E` *(rencana M2)* |
 | Pause | `Esc` |
