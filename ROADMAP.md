@@ -4,9 +4,9 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 
 | Milestone | Versi | Fokus | Status | Exit Criteria |
 | --- | --- | --- | --- | --- |
-| **M0 — Foundation** | `0.0.x` | Repo, struktur folder, GDD, autoload, CI | 🟡 Berjalan | Dokumen inti selesai; proyek jalan di editor; convention commit disepakati |
-| **M1 — Vertical Slice** | `0.1.0` | 1 bioma kecil, player, build mode, 1 quest | ⬜ Belum | 10 menit gameplay utuh: explore → pecah balok → bangun → objective selesai |
-| **M2 — Core Systems** | `0.2.0` | Inventory, quest, combat, save/load, skill tree | ⬜ Belum | Semua sistem M2 punya test & bisa loop tanpa crash |
+| **M0 — Foundation** | `0.0.x` | Repo, struktur folder, GDD, autoload, CI | ✅ Selesai | Dokumen inti selesai; proyek jalan di editor; convention commit disepakati |
+| **M1 — Vertical Slice** | `0.1.0` | 1 bioma kecil, player, build mode, 1 quest | ✅ Selesai | 10 menit gameplay utuh: explore → pecah balok → bangun → objective selesai |
+| **M2 — Core Systems** | `0.2.0` | Inventory, quest graph, combat, save/load, Blueprint Tree | 🟡 Berjalan | Semua sistem M2 punya test & bisa loop tanpa crash |
 | **M3 — World & Biomes** | `0.3.0` | Chunk streaming, 3 bioma, fast travel, dynamic audio | ⬜ Belum | 3 bioma dapat dijelajahi tanpa loading screen; 60 FPS di target PC |
 | **M4 — Content Complete** | `0.4.0` | 5 World Fragment, 20 quest, bos, NPC, cutscene | ⬜ Belum | Story main path bisa diselesaikan dari awal sampai ending |
 | **M5 — Polish & QA** | `0.5.0` | UX, balansi, aksesibilitas, optimasi, bug fix | ⬜ Belum | 0 bug blocker; playtest eksternal ≥ 10 orang; checklist aksesibilitas lolos |
@@ -25,7 +25,7 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] Branch protection `main` (2 required checks: lint + gdUnit4)
 
 ### M1 — Vertical Slice
-- [x] Input map 15 aksi (WASD, jump, sprint, attack, build, rotate, blueprint 1-3, vision, interact, pause)
+- [x] Input map 18 aksi (WASD, jump, sprint, attack, gadget, build, rotate, blueprint 1-3, vision, interact, pause, save_menu, blueprint_tree)
 - [x] Player minifigure: movement, kamera orbit third-person, lompat, sprint, health, attack
 - [x] Ground placeholder + pencahayaan untuk vertical slice
 - [x] Brick breaking: 6 prop pecah jadi pickup balok + stud (magnet ke player)
@@ -35,14 +35,21 @@ Milestone berbasis **vertical slice dulu, konten kemudian**. Status mengikuti ni
 - [x] HUD minimal: health, balok/stud, objective, hint build mode, notifikasi
 - [x] 18 unit test aktif (movement, inventory, quest, resource, alur M1)
 
-### M2 — Core Systems
+### M2 — Core Systems *(saat ini)*
 - [x] Inventory & Currency — serialisasi Brick/Stud/Core/Fragment/Suit + save 3 slot
-- [ ] Quest graph, prerequisite, dan failure state
+- [x] Quest graph, prerequisite, chain `next_quest`, failure state + retry
 - [x] Combat melee (kombo 3 hit + Mega Swing) & gadget Brick Blaster + Brick Grunt AI
 - [x] Save/load 3 slot + auto + checkpoint + atomic write, backup, dan migrasi versi
 - [x] Creator Level & XP (ADR-005) + reward XP dari quest
-- [ ] Blueprint Tree berbasis Blueprint Fragment
-- [x] Unit test sistem M2 (10 test baru; total 29 test aktif)
+- [x] Blueprint Tree 3 cabang berbasis Blueprint Fragment + UI pintasan `T` (ADR-006)
+- [x] Unit test sistem M2 (quest graph & Blueprint Tree; total **50 test aktif**)
+
+#### M2 — tersisa
+- [ ] Boss + telegraph serangan
+- [ ] Pause menu penuh & auto-save saat quit
+- [ ] Konten blueprint build-based (turret, grapple pad, magnet pad)
+- [ ] Quest Log UI lengkap (tab Main/Side/Contracts/Completed)
+- [ ] Isi penuh node Blueprint Tree (8 node saat ini)
 
 ### M3 — World & Biomes
 - [ ] WorldFragment streaming (chunk 64×64)

@@ -18,6 +18,7 @@
 | `Inventory` | `scripts/systems/Inventory.gd` | Material, currency, blueprint | Tahu struktur UI |
 | `QuestManager` | `scripts/systems/QuestManager.gd` | Quest & progres objective | Memicu gameplay langsung |
 | `Progression` | `scripts/systems/Progression.gd` | Creator Level & XP | Mengurus quest/inventory |
+| `BlueprintTree` | `scripts/systems/BlueprintTree.gd` | Node tree, gate level/Fragment, unlock blueprint/suit | Mengurus quest/combat |
 | `SaveManager` | `scripts/autoloads/SaveManager.gd` | Serialisasi & slot save | Tahu struktur UI |
 | `AudioManager` | `scripts/autoloads/AudioManager.gd` | Bus, music, SFX | Memicu gameplay logic |
 
@@ -70,7 +71,8 @@ Main (Node)                         # scripts/main/Main.gd
 ├── SaveGame (Node)                 # snapshot & restore state
 └── UI (CanvasLayer)
     ├── HUD (CanvasLayer)           # scripts/ui/HUD.gd
-    └── SaveMenu (CanvasLayer)      # 3 slot + auto, dibuka dengan F6
+    ├── SaveMenu (CanvasLayer)      # 3 slot + auto, dibuka dengan F6
+    └── BlueprintTreeUI (CanvasLayer) # tree 3 cabang, dibuka dengan T
 ```
 
 Rencana M2 lanjutan: tambah `ChunkManager`, `EnemyContainer`, `BuildWheel` radial penuh,
@@ -100,7 +102,7 @@ flowchart LR
 | --- | --- | --- |
 | Signal Bus | Event lintas modul | `EventBus.item_collected` |
 | State Machine | Game state & enemy AI | `GameManager.State` |
-| Resource-driven data | Item, quest, Suit | `ItemDef`, `QuestDef` |
+| Resource-driven data | Item, quest, Suit, node tree | `ItemDef`, `QuestDef`, `BlueprintNodeDef` |
 | Object Pool | Balok, projectile, SFX | `Pool<T>` di `scripts/utils/` |
 | Service Locator (terbatas) | Autoload | `SaveManager.save_game()` |
 | Command + Undo | Build Mode | `BuildCommand` stack |
@@ -140,6 +142,9 @@ Catat keputusan besar lewat template [ADR](../templates/adr-template.md):
 - ADR-001 — Menggunakan EventBus sentral (draft)
 - ADR-002 — Sistem dialog: custom resource vs Dialogic (belum diputus)
 - ADR-003 — GDScript vs C# untuk sistem hot-path (belum diputus)
+- ADR-004 — `Inventory` & `QuestManager` sebagai autoload (accepted)
+- ADR-005 — `Progression` sebagai autoload (accepted)
+- ADR-006 — `BlueprintTree` sebagai autoload (accepted)
 
 ## 10. Checklist Review Arsitektur
 

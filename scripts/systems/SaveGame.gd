@@ -50,6 +50,7 @@ func capture_state() -> Dictionary:
 		"player": player_data,
 		"progression": Progression.to_dict(),
 		"inventory": Inventory.to_dict(),
+		"blueprint_tree": BlueprintTree.to_dict(),
 		"quests": QuestManager.to_dict(),
 		"world": _capture_world(),
 	}
@@ -104,6 +105,7 @@ func apply_state(data: Dictionary) -> void:
 		player.call("from_dict", data.get("player", {}))
 	Progression.from_dict(data.get("progression", {}))
 	Inventory.from_dict(data.get("inventory", {}))
+	BlueprintTree.from_dict(data.get("blueprint_tree", {}))
 	QuestManager.from_dict(data.get("quests", {}))
 	_apply_world(data.get("world", {}))
 

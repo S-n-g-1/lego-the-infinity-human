@@ -20,6 +20,16 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - CI first run hijau: lint + 8 test gdUnit4 lolos.
 - Branch protection `main` aktif dengan required checks lint & gdUnit4.
 
+### M2 — Core Systems (quest graph & Blueprint Tree)
+- `QuestDef` baru: `quest_type`, `prerequisites`, `next_quest`, `fail_on_player_death`.
+- `QuestManager` jadi state machine `LOCKED → AVAILABLE → ACTIVE → COMPLETED/FAILED` dengan retry, rantai quest otomatis, objective `defeat`/`explore`/`talk`, dan serialisasi `states`/`failed`.
+- Quest berantai: `bc_001 → sq_001 ("Bersihkan Nexus") → bc_002 ("Katapel Perdana")`; reward `fragment` masuk Inventory sebagai `blueprint_fragment`.
+- `BlueprintNodeDef` + `BlueprintTree` autoload (ADR-006): 3 cabang (traversal/combat/utility), 8 node `.tres`, gate **Creator Level = slot** dan **Fragment = node**, unlock memberi blueprint/suit.
+- UI Blueprint Tree dibuka dengan `T` (`BlueprintTreeUI.gd`), menampilkan alasan node terkunci; HUD kini menampilkan jumlah Fragment.
+- `SaveGame` menyimpan & memulihkan `blueprint_tree`; urutan load `Inventory` → `BlueprintTree` menjaga reward node tetap terbuka.
+- Isolasi state quest di test lama (snapshot `QuestManager.to_dict()` per test) agar chain tidak bocor antar suite.
+- 9 unit test baru; total **50 test lulus**, lint & boot headless hijau.
+
 ### M2 — Core Systems (combat)
 - `CombatMath.gd`: kalkulasi combo 3 hit, heavy hit ke-3 (break power 2), Mega Swing 3× (cooldown 4 dtk), resolved damage saat break power kurang, dan `can_hit()` berbasis arah + jarak.
 - `EnemyDef.gd` & `DropTableDef.gd` + `.tres`: `enemy_brick_grunt.tres` (30 HP, 2.5 m/s, detect 12 m) dan `drop_table_grunt.tres` (6–10 balok, 5–8 Studs).
@@ -27,7 +37,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan v
 - `BrickProjectile.tscn/.gd`: Brick Blaster 8 damage, 1.2 dtk cooldown, klik kanan; otomatis nonaktif saat Build Mode.
 - `Player.gd`: combo melee, charge Mega Swing, gadget, dan serangan yang kena group `breakable` **dan** `enemy`.
 - `BrickGrunt.tscn`: 2 musuh ditambahkan ke `Main.tscn` sebagai uji combat.
-- Input baru: `gadget` = klik kanan (17 aksi terdaftar).
+- Input baru: `gadget` = klik kanan (17 aksi saat combat; sekarang 18 dengan `blueprint_tree`).
 - 12 unit test baru; total **41 test lulus**.
 
 ### M2 — Core Systems (save & progression)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BlueprintNodeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/BlueprintNodeDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"builder"
+display_name = "Suit Builder"
+branch = &"utility"
+required_level = 3
+fragment_cost = 1
+prerequisite_node = &"utility_root"
+unlock_suit = &"suit_builder"
+description = "Build range +4 m dan snap lebih cepat."

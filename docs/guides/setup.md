@@ -31,12 +31,13 @@ git remote add origin <URL_REPO>
 #    - Tutorial: pecah balok → B → 1 → klik pasang jembatan → Vera menyeberang
 #    - Klik kiri = kombo/Mega Swing, klik kanan = Brick Blaster ke Brick Grunt
 #    - F6 membuka menu Save/Load (3 slot + auto); checkpoint otomatis menyimpan
+#    - T membuka Blueprint Tree; Fragment dari quest dipakai untuk membuka node
 #    - Input map dibuat ulang (jika perlu): godot --headless -s tools/setup_input_map.gd
 ```
 
 ## 3. Struktur Awal yang Sudah Ada
 
-- 7 autoload: `EventBus`, `GameManager`, `Inventory`, `QuestManager`, `Progression`, `SaveManager`, `AudioManager`
+- 8 autoload: `EventBus`, `GameManager`, `Inventory`, `QuestManager`, `Progression`, `BlueprintTree`, `SaveManager`, `AudioManager` (ADR-004/005/006)
 - Folder lengkap sesuai `../architecture/overview.md`
 - `.editorconfig` (UTF-8) & `.gitattributes`
 - `.gitignore` (mengabaikan `.godot/`, `exports/`, log, save lokal)
@@ -48,7 +49,7 @@ Plugin ada di `addons/gdUnit4/` dan sudah aktif lewat `[editor_plugins]` di `pro
 - UI editor: menu **gdUnit4 → Run Tests**
 - CLI: lihat [`ci.md`](ci.md#3-menjalankan-locally)
 
-Test ada di `tests/test_*.gd` (EventBus, SaveManager, GameManager, movement, inventory, quest, dan alur M1).
+Test ada di `tests/test_*.gd` (EventBus, SaveManager, GameManager, movement, inventory, quest, quest graph, Blueprint Tree, combat, dan alur M1). Saat ini **50 test** hijau.
 
 ## 5. Font & Aset
 

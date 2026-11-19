@@ -45,6 +45,7 @@ signal enemy_defeated(enemy_id: StringName)
 # --- Progresi --------------------------------------------------------------
 signal xp_gained(amount: int, source: StringName)
 signal creator_level_changed(level: int, xp: int)
+signal blueprint_node_unlocked(node_id: StringName)
 
 # --- UI & naratif ----------------------------------------------------------
 signal notification_requested(text: String)

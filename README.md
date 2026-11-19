@@ -21,7 +21,7 @@ Pemain berperan sebagai *Infinity Human* — minifigure yang terbangun di **Infi
 
 1. Buka proyek dengan **Godot 4.6** (`Project > Open` → pilih folder ini).
 2. Tekan **F5** untuk menjalankan — bootstrap minimal `scenes/main/Main.tscn` aktif dan memindahkan state `BOOT → PLAYING`.
-3. Struktur dasar sudah aktif: 7 autoload terdaftar di `project.godot` (lihat [`docs/architecture/overview.md`](docs/architecture/overview.md)).
+3. Struktur dasar sudah aktif: **8 autoload** terdaftar di `project.godot` (lihat [`docs/architecture/overview.md`](docs/architecture/overview.md)).
 
 Autoload yang tersedia:
 
@@ -29,6 +29,10 @@ Autoload yang tersedia:
 | --- | --- | --- |
 | `EventBus` | `scripts/autoloads/EventBus.gd` | Sinyal global antar-sistem |
 | `GameManager` | `scripts/autoloads/GameManager.gd` | State machine game |
+| `Inventory` | `scripts/systems/Inventory.gd` | Material, Stud, Fragment, blueprint, suit |
+| `QuestManager` | `scripts/systems/QuestManager.gd` | Quest graph, objective, reward |
+| `Progression` | `scripts/systems/Progression.gd` | Creator Level & XP |
+| `BlueprintTree` | `scripts/systems/BlueprintTree.gd` | Node tree 3 cabang (ADR-006) |
 | `SaveManager` | `scripts/autoloads/SaveManager.gd` | Save/load JSON di `user://saves` |
 | `AudioManager` | `scripts/autoloads/AudioManager.gd` | Music/SFX & bus audio |
 
@@ -78,8 +82,9 @@ Aturan penempatan detail ada di [`docs/architecture/overview.md`](docs/architect
 | Interact | `E` *(rencana M2)* |
 | Pause | `Esc` |
 | Menu Save/Load | `F6` |
+| Blueprint Tree | `T` (buka node dengan Blueprint Fragment) |
 
-Alur tutorial M1: pecahkan 6 balok → kumpulkan minimal 12 balok → tekan `B` → pasang **Jembatan 4m** → Vera menyeberang → quest selesai.
+Alur tutorial M1: pecahkan 6 balok → kumpulkan minimal 12 balok → tekan `B` → pasang **Jembatan 4m** → Vera menyeberang → quest selesai. Rantai M2 lanjut otomatis: `bc_001` → `sq_001` (pecah 2 Brick Grunt) → `bc_002` (pasang katapel). Fragment dari quest dipakai di Blueprint Tree (`T`).
 
 ## CI
 

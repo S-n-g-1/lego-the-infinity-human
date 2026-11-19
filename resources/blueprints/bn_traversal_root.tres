@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlueprintNodeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/BlueprintNodeDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"traversal_root"
+display_name = "Traversal"
+branch = &"traversal"
+required_level = 1
+fragment_cost = 0
+description = "Cabang jembatan, katapel, dan mobilitas."

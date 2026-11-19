@@ -22,6 +22,7 @@ const ACTIONS: Dictionary = {
 	"interact": [{"key": KEY_E}],
 	"pause": [{"key": KEY_ESCAPE}],
 	"save_menu": [{"key": KEY_F6}],
+	"blueprint_tree": [{"key": KEY_T}],
 }
 
 

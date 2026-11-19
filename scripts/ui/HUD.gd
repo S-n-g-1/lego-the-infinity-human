@@ -34,8 +34,10 @@ func _on_health_changed(current: float, maximum: float) -> void:
 
 
 func _refresh_inventory() -> void:
-	_brick_label.text = "Balok  %d     Stud  %d" % [
-		Inventory.get_bricks(), Inventory.get_studs()
+	_brick_label.text = "Balok  %d     Stud  %d     Fragment  %d" % [
+		Inventory.get_bricks(),
+		Inventory.get_studs(),
+		Inventory.get_amount(&"blueprint_fragment"),
 	]
 
 
@@ -78,7 +80,7 @@ func _on_objective_updated(
 
 func _on_quest_completed(_quest_id: StringName) -> void:
 	_refresh_objective()
-	_show_notification("Quest selesai! +30 stud, Katapel terbuka")
+	_show_notification("Quest selesai! Reward masuk ke inventory")
 
 
 func _on_build_mode_toggled(enabled: bool) -> void:

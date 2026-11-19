@@ -57,6 +57,22 @@ flowchart TD
 - XP hanya membuka *slot* untuk node; Fragment membuka node itu sendiri.
 - Pemain bisa memilih urutan cabang → build berbeda tiap playthrough.
 
+### Status Implementasi M2
+`BlueprintTree` (autoload, ADR-006) memuat 8 node dari `resources/blueprints/*.tres`. Node root cabang (`fragment_cost = 0`, level 1) terbuka otomatis.
+
+| Node | Cabang | Level | Fragment | Prasyarat | Reward |
+| --- | --- | --- | --- | --- | --- |
+| `traversal_root` | traversal | 1 | 0 | — | gate cabang |
+| `catapult` | traversal | 2 | 1 | `traversal_root` | blueprint katapel |
+| `featherstep` | traversal | 2 | 1 | `traversal_root` | Suit Featherstep |
+| `combat_root` | combat | 1 | 0 | — | gate cabang |
+| `bulwark` | combat | 3 | 2 | `combat_root` | Suit Bulwark |
+| `utility_root` | utility | 1 | 0 | — | gate cabang |
+| `builder` | utility | 3 | 1 | `utility_root` | Suit Builder |
+| `architect` | utility | 5 | 2 | `builder` | Suit Architect |
+
+Sumber Fragment saat ini: quest `sq_001` dan `bc_002` (1 each). UI dibuka dengan `T`; alasan kegagalan unlock ditampilkan per node (`Butuh Creator Lv N`, `Butuh node sebelumnya`, `Butuh N Fragment`). Status node ikut tersimpan di `SaveGame` lewat `BlueprintTree.to_dict()/from_dict()`.
+
 ## 4. World Fragment Gating
 
 | Fragment | Syarat | Reward utama |

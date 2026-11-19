@@ -19,8 +19,6 @@ func test_bayar_dan_refund() -> void:
 
 
 func test_quest_aktif_termuat() -> void:
-	if QuestManager.get_active_quest() == null:
-		QuestManager.start_quest(&"bc_001")
 	var quest := QuestManager.get_active_quest()
 	assert_bool(quest != null).is_true()
 	if quest != null:

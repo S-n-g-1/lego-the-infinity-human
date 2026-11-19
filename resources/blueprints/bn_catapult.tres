@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BlueprintNodeDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/BlueprintNodeDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"catapult"
+display_name = "Katapel"
+branch = &"traversal"
+required_level = 2
+fragment_cost = 1
+prerequisite_node = &"traversal_root"
+unlock_blueprint = &"catapult"
+description = "Membuka blueprint katapel lewat tree (alternatif reward quest)."

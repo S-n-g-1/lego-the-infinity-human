@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/QuestDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"sq_001"
+title = "Bersihkan Nexus"
+description = "Dua Brick Grunt mengganggu jalur menuju katapel. Pecah keduanya."
+quest_type = &"side"
+objectives = [{
+"id": &"obj_defeat_grunt",
+"type": &"defeat",
+"target": &"brick_grunt",
+"required": 2,
+"label": "Pecah 2 Brick Grunt"
+}]
+rewards = {&"stud": 40, &"xp": 100, &"fragment": 1}
+prerequisites = [&"bc_001"]
+next_quest = &"bc_002"
+start_active = false

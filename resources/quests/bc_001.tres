@@ -7,6 +7,7 @@ script = ExtResource("1_script")
 id = &"bc_001"
 title = "Perbaiki Jembatan Nexus"
 description = "Kumpulkan balok, pasang jembatan, dan bantu Vera menyeberang."
+quest_type = &"contract"
 objectives = [
 {
 "id": &"obj_collect",
@@ -31,4 +32,5 @@ objectives = [
 }
 ]
 rewards = {&"stud": 30, &"xp": 40, &"blueprint": &"catapult"}
+next_quest = &"sq_001"
 start_active = true

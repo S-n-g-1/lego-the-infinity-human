@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/QuestDef.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"bc_002"
+title = "Katapel Perdana"
+description = "Pasang katapel untuk membuka rute baru. Kontrak ini gagal jika player down."
+quest_type = &"contract"
+objectives = [{
+"id": &"obj_build_catapult",
+"type": &"build",
+"target": &"catapult",
+"required": 1,
+"label": "Pasang Katapel"
+}]
+rewards = {&"stud": 50, &"xp": 120, &"fragment": 1}
+prerequisites = [&"sq_001"]
+fail_on_player_death = true
+start_active = false

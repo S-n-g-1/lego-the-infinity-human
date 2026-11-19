@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scripts/main/Main.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/systems/BuildMode.gd" id="2_buildmode"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/systems/SaveGame.gd" id="9_savegame"]
 [ext_resource type="Script" path="res://scripts/ui/SaveMenu.gd" id="10_savemenu"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/BrickGrunt.tscn" id="11_grunt"]
+[ext_resource type="Script" path="res://scripts/ui/BlueprintTreeUI.gd" id="12_treeui"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -81,3 +82,6 @@ script = ExtResource("9_savegame")
 
 [node name="SaveMenu" type="CanvasLayer" parent="UI"]
 script = ExtResource("10_savemenu")
+
+[node name="BlueprintTreeUI" type="CanvasLayer" parent="UI"]
+script = ExtResource("12_treeui")

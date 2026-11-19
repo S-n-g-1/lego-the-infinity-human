@@ -22,6 +22,7 @@ GameManager="*res://scripts/autoloads/GameManager.gd"
 Inventory="*res://scripts/systems/Inventory.gd"
 QuestManager="*res://scripts/systems/QuestManager.gd"
 Progression="*res://scripts/systems/Progression.gd"
+BlueprintTree="*res://scripts/systems/BlueprintTree.gd"
 SaveManager="*res://scripts/autoloads/SaveManager.gd"
 AudioManager="*res://scripts/autoloads/AudioManager.gd"
 
@@ -114,6 +115,11 @@ save_menu={
 gadget={
 "deadzone": 0.5,
 "events": Array[InputEvent]([Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+])
+}
+blueprint_tree={
+"deadzone": 0.5,
+"events": Array[InputEvent]([Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":84,"physical_keycode":84,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ])
 }
 

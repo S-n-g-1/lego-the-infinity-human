@@ -1,6 +1,6 @@
 # GDD 07 — Quests
 
-> Versi: 0.1 | Terkait: `05-progression.md`, `09-narrative.md`
+> Versi: 0.2 | Terkait: `05-progression.md`, `09-narrative.md`, `../design/adr/ADR-004-inventory-quest-autoload.md`
 
 ## 1. Jenis Quest
 
@@ -22,15 +22,17 @@ extends Resource
 
 @export var id: StringName
 @export var title: String
-@export var quest_type: QuestType
+@export var quest_type: StringName   # main/side/contract/bounty/discovery
 @export var description: String
-@export var objectives: Array[ObjectiveDef]
-@export var rewards: Dictionary      # {xp, studs, cores, blueprint_fragment}
-@export var prerequisite: Array[StringName]
-@export var unlocks_fragment: StringName
+@export var objectives: Array[Dictionary]
+@export var rewards: Dictionary      # {xp, stud, fragment, blueprint, suit}
+@export var prerequisites: Array[StringName]
+@export var next_quest: StringName
+@export var fail_on_player_death: bool
+@export var start_active: bool
 ```
 
-Objective: `{ id, type, target, required, current }` dengan tipe: `collect`, `build`, `defeat`, `interact`, `explore`, `talk`.
+Objective: `{ id, type, target, required, label }` dengan tipe: `collect`, `build`, `defeat`, `interact`, `explore`, `talk`. Implementasi M2 memakai `Array[Dictionary]` (bukan `ObjectiveDef`) agar data `.tres` tetap ringan; `ObjectiveDef` bisa ditambahkan saat Quest Log UI masuk.
 
 ## 3. State Machine
 
@@ -46,7 +48,9 @@ stateDiagram-v2
 	Failed --> Active: retry
 ```
 
-- Quest aktif disimpan di save; maksimal **3 aktif + 1 main** ditampilkan di HUD.
+- Quest aktif disimpan di save. **Implementasi M2: 1 quest aktif** (target 3 aktif + 1 main untuk Quest Log UI di M4).
+- Rantai `next_quest` otomatis membuka quest lanjutan jika prerequisite sudah terpenuhi.
+- `fail_on_player_death = true` → state `FAILED`, `quest_failed` dipancarkan, `retry_quest()` mereset progres.
 - Objective yang sudah selesai dicentang, bukan hilang → pemain tahu progres.
 
 ## 4. Contoh Quest Lengkap
@@ -60,9 +64,10 @@ stateDiagram-v2
 | Objective 1 | Kumpulkan 12 Brick (`collect`) |
 | Objective 2 | Place blueprint `bridge_4m` di gap (`build`) |
 | Objective 3 | Biarkan NPC menyeberang (`interact`) |
-| Reward | 60 XP, 30 Stud, Suit Builder |
+| Reward | 40 XP, 30 Stud, blueprint katapel |
 | Perubahan dunia | Jembatan permanen, NPC pindah ke seberang |
-| Alternatif | Bisa pakai katapel jika already unlock (M2) |
+| Lanjutan | `next_quest = sq_001` ("Bersihkan Nexus", 2 Brick Grunt) → `bc_002` ("Katapel Perdana") |
+| Alternatif | Bisa pakai katapel jika sudah unlock (M2) |
 
 ## 5. Prinsip Desain Quest
 
@@ -78,15 +83,25 @@ stateDiagram-v2
 | --- | --- |
 | `item_collected` | Objective `collect` bertambah |
 | `structure_built` | Objective `build` selesai |
-| musuh pop | Objective `defeat` bertambah |
+| `enemy_defeated` | Objective `defeat` bertambah |
 | `area_entered` | Objective `explore` selesai |
 | `dialogue_finished` | Objective `talk` selesai |
-| semua objective done | `EventBus.quest_completed` → Claim UI → reward |
+| `player_died` | Quest ber-flag `fail_on_player_death` → `FAILED` |
+| semua objective done | `EventBus.quest_completed` → reward otomatis → `next_quest` |
+
+`reward.fragment` diterjemahkan menjadi `blueprint_fragment` di Inventory (bukan kunci `cores` seperti di tabel desain awal).
 
 QuestManager menyimpan state di `SaveManager` sebagai:
 ```json
-{ "active": ["BC_001"], "completed": ["DS_002"], "progress": { "BC_001": { "obj_1": 12 } } }
+{
+  "active": "bc_001",
+  "completed": ["bc_001"],
+  "failed": [],
+  "progress": { "obj_collect": 12, "obj_build": 1, "obj_cross": 1 },
+  "states": { "bc_001": 3, "sq_001": 2, "bc_002": 0 }
+}
 ```
+Kode state: `0 = LOCKED, 1 = AVAILABLE, 2 = ACTIVE, 3 = COMPLETED, 4 = FAILED`. Progres disimpan per objective id (flat), bukan bersarang per quest.
 
 ## 7. Quest Log UI
 

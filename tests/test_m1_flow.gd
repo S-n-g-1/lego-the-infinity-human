@@ -2,11 +2,22 @@ class_name TestM1Flow
 extends GdUnitTestSuite
 ## Simulasi alur vertical slice M1 lewat EventBus:
 ## kumpulkan balok → pasang jembatan → Vera menyeberang → quest selesai.
+## State quest di-snapshot agar chain ke quest berikutnya tidak bocor ke suite lain.
+
+var _quest_snapshot: Dictionary = {}
+
+
+func before_test() -> void:
+	_quest_snapshot = QuestManager.to_dict()
+	QuestManager.reset_state()
+	QuestManager.start_quest(&"bc_001")
+
+
+func after_test() -> void:
+	QuestManager.from_dict(_quest_snapshot)
 
 
 func test_quest_tutorial_selesai_dan_hadiah_terbuka() -> void:
-	if QuestManager.get_active_quest() == null:
-		QuestManager.start_quest(&"bc_001")
 	for _index in 12:
 		EventBus.item_collected.emit(&"brick", 1)
 	EventBus.structure_built.emit(&"bridge_4m")
